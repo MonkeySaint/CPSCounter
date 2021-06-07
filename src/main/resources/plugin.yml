@@ -1,0 +1,7 @@
+name: CPSCounter
+version: ${project.version}
+main: ca.elimin8.cpscounter.CPSCounter
+api-version: 1.13
+authors: [ kylevardy_ ]
+description: A plugin that add a cps counter to the action bar
+website: elimin8.ca
