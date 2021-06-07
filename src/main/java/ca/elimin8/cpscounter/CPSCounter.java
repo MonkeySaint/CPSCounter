@@ -14,14 +14,14 @@ import java.util.Map;
 
 public final class CPSCounter extends JavaPlugin {
     // Plugin startup logic
-    public int version = Integer.valueOf(Bukkit.getServer().getClass().getPackage().getName().replace(".", ",").split(",")[3].replace("1_", "").replaceAll("_R[0-9]", "").replaceAll("v", ""));
+    public int version = Integer.valueOf(Bukkit.getServer().getClass().getPackage().getName().replace(".", ",").split(",")[3].replaceFirst("1_", "").replaceAll("_R\\d", "").replaceAll("v", ""));
     public static Map<Player, Integer> taskID = new HashMap<Player, Integer>();
-    public onClick cps = new onClick();
+    public onClick cps = new onClick(this);
     public String msg = ChatColor.translateAlternateColorCodes('&', getConfig().getString("actionbartext"));
     @Override
     public void onEnable() {
         // Plugin startup logic
-        if (version > 12) {
+        if (version > 9) {
             Current current = new Current(this);
             for (Player p : Bukkit.getOnlinePlayers()) {
                 current.runnable(p);
@@ -34,7 +34,7 @@ public final class CPSCounter extends JavaPlugin {
             }
         }
         getServer().getPluginManager().registerEvents(new onJoinOrLeave(this), this);
-        getServer().getPluginManager().registerEvents(new onClick(), this);
+        getServer().getPluginManager().registerEvents(new onClick(this), this);
     }
 
     @Override

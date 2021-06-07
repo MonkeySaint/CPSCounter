@@ -19,7 +19,7 @@ public class onJoinOrLeave implements Listener {
     public void onJoin(PlayerJoinEvent e){
         plugin.cps.leftCPS.put(e.getPlayer(), 0);
         plugin.cps.rightCPS.put(e.getPlayer(), 0);
-        if (plugin.version > 12) {
+        if (plugin.version > 9) {
             Current current = new Current(plugin);
             current.runnable(e.getPlayer());
         }
